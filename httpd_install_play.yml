@@ -1,0 +1,16 @@
+- name: installing httpd service
+  hosts: app-server
+  become: yes
+  tasks:
+    - name: installing httpd
+      package:
+        name: httpd
+        state: present
+        
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+    - name: creating html file
+      shell: echo "food-app" > /var/www/html/foodapp
