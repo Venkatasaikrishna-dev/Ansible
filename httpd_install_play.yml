@@ -1,16 +1,19 @@
-- name: installing httpd service
-  hosts: app-server
-  become: yes
-  tasks:
-    - name: installing httpd
-      package:
-        name: httpd
-        state: present
-        
-    - name: start httpd service
-      service:
-        name: httpd
-        state: started
-        enabled: true
-    - name: creating html file
-      shell: echo "food-app" > /var/www/html/foodapp
+---
+ - name: installing httpd service
+   hosts: qa
+   become: yes
+   tasks:
+     - name: Installing httpd
+       package:
+         name: httpd
+         state: present
+
+
+     - name: start httpd service
+       service:
+         name: httpd
+         state: started
+         enabled: true
+
+     - name: foodapp
+       shell: git clone https://github.com/saiurakrishna/food-app.git -d /var/www/html/food-app
