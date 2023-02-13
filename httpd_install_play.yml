@@ -16,4 +16,4 @@
          enabled: true
 
      - name: foodapp
-       shell: git clone https://github.com/saiurakrishna/food-app.git -d /var/www/html/food-app
+       shell: cd /var/www/html && git clone https://github.com/saiurakrishna/food-app.git
